@@ -4,6 +4,10 @@ const { ApplicationV2: ApplicationV2$1, HandlebarsApplicationMixin: HandlebarsAp
 
 class Aetherball {
     popout
+
+	get settings() {
+		return {};
+	}
 }
 
 class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
@@ -19,6 +23,13 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		}
 	};
 
+	static PARTS = {
+		list: {
+			id: "list",
+			template: "modules/aetherball/templates/popout.html",
+		}
+	};
+
     async _renderFrame(options) {
 		const frame = await super._renderFrame(options);
 		this.window.close.remove(); // Prevent closing
@@ -30,24 +41,35 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		return this;
 	}
     
-	/*_onFirstRender(context, options) {
+	_onFirstRender(context, options) {
 		super._onFirstRender(context, options);
 		const position = game.settings.get("aetherball", "popoutPosition");
 		const left = position.left ?? ui.nav?.element[0].getBoundingClientRect().left;
 		const top = position.top ?? ui.controls?.element[0].getBoundingClientRect().top;
 		options.position = {...options.position, left, top};
-	}*/
+	}
 
-    /*setPosition(position) {
+    setPosition(position) {
 		const superPosition = super.setPosition(position);
 		const { left, top } = superPosition;
 		game.settings.set("aetherball", "popoutPosition", { left, top });
 		return superPosition;
-	}*/
+	}
+}
+
+async function preloadTemplates() {
+	const templatePaths = [
+		"modules/aeterball/templates/popout.html",
+	];
+
+	return loadTemplates(templatePaths);
 }
 
 Hooks.once('init', async function() {
+	preloadTemplates();
     CONFIG.AETHERBALL = new Aetherball()
+	registerSettings();
+	registerKeybindings();
 });
 
 Hooks.once('ready', async function() {
@@ -59,4 +81,22 @@ async function togglePopout() {
 	CONFIG.AETHERBALL.popout ??= new AetherballPopout();
 	if (CONFIG.AETHERBALL.popout.rendered) await CONFIG.AETHERBALL.popout.close({ animate: false });
 	else await CONFIG.AETHERBALL.popout.render(true);
+}
+
+function registerSettings() {
+	game.settings.register("dice-calculator", "popoutPosition", {
+		scope: "client",
+		config: false,
+		default: {},
+		type: Object
+	});
+}
+
+function registerKeybindings() {
+	game.keybindings.register("aetherball", "popout", {
+		name: "Open Aetherball Actions",
+		onDown: async () => {
+			await togglePopout();
+		}
+	});
 }
