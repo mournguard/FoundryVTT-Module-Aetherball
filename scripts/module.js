@@ -1,5 +1,6 @@
 // Basically all of this stolen from Dice Tray cause I can't find a single explanation on how fvtt works : https://github.com/mclemente/fvtt-dice-tray
 
+const { Compendium: Compendium$1 } = client;
 const { ApplicationV2: ApplicationV2$1, HandlebarsApplicationMixin: HandlebarsApplicationMixin$1 } = foundry.applications.api;
 
 class Aetherball {
@@ -24,8 +25,8 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 	};
 
 	static PARTS = {
-		list: {
-			id: "list",
+		actions: {
+			id: "actions",
 			template: "modules/aetherball/templates/popout.html",
 		}
 	};
@@ -34,6 +35,11 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		const frame = await super._renderFrame(options);
 		this.window.close.remove(); // Prevent closing
 		return frame;
+	}
+
+	async render() {
+		const actions = fetchActions();
+		this.renderTemplate('actions', { actions: actions });
 	}
 
     async close(options={}) {
@@ -55,6 +61,12 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		game.settings.set("aetherball", "popoutPosition", { left, top });
 		return superPosition;
 	}
+}
+
+export async function fetchActions() {
+	const compendium = game.packs.get('aetherball');
+	const actions = await compendium.getDocuments();
+	return actions;
 }
 
 async function preloadTemplates() {
