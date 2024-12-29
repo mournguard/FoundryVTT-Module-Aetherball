@@ -38,7 +38,7 @@
     "label": "Aetherball",
     "path": "packs/aetherball",
     "type": "Item",
-    "banner": "../../assets/banner.webp",
+    "banner": "assets/banner.webp",
     "system": "pf2e"
   }],
   "languages": [

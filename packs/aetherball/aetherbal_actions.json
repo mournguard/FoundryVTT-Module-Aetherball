@@ -52,7 +52,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_1_Hinder.jpg",
+      "img": "assets/aetherball_1_Hinder.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -99,7 +99,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_8_Grab.jpg",
+      "img": "assets/aetherball_8_Grab.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -157,7 +157,7 @@
         "context": null,
         "unidentified": false
       },
-      "img": "../../assets/aetherball_10_Concentrating.jpg",
+      "img": "assets/aetherball_10_Concentrating.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -204,7 +204,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_7_Intercept.jpg",
+      "img": "assets/aetherball_7_Intercept.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -262,7 +262,7 @@
         "context": null,
         "unidentified": false
       },
-      "img": "../../assets/aetherball_3_Carrier.jpg",
+      "img": "assets/aetherball_3_Carrier.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -309,7 +309,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_11_Yank.jpg",
+      "img": "assets/aetherball_11_Yank.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -356,7 +356,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_13_Blast.jpg",
+      "img": "assets/aetherball_13_Blast.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -403,7 +403,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_4_Throw.jpg",
+      "img": "assets/aetherball_4_Throw.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -450,7 +450,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_6_Steal.jpg",
+      "img": "assets/aetherball_6_Steal.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -497,7 +497,7 @@
         "category": "defensive",
         "deathNote": false
       },
-      "img": "../../assets/aetherball_0_Shield.jpg",
+      "img": "assets/aetherball_0_Shield.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -555,7 +555,7 @@
         "context": null,
         "unidentified": false
       },
-      "img": "../../assets/aetherball_9_Prone.jpg",
+      "img": "assets/aetherball_9_Prone.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -602,7 +602,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_5_Tackle.jpg",
+      "img": "assets/aetherball_5_Tackle.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -649,7 +649,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_2_Force%20Wall.jpg",
+      "img": "assets/aetherball_2_Force%20Wall.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
@@ -696,7 +696,7 @@
         "category": null,
         "deathNote": false
       },
-      "img": "../../assets/aetherball_12_Push.jpg",
+      "img": "assets/aetherball_12_Push.jpg",
       "flags": {},
       "_stats": {
         "coreVersion": "12.331",
