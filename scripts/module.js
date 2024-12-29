@@ -1,6 +1,5 @@
 // Basically all of this stolen from Dice Tray cause I can't find a single explanation on how fvtt works : https://github.com/mclemente/fvtt-dice-tray
 
-const { Compendium: Compendium$1 } = client;
 const { ApplicationV2: ApplicationV2$1, HandlebarsApplicationMixin: HandlebarsApplicationMixin$1 } = foundry.applications.api;
 
 class Aetherball {
@@ -64,7 +63,7 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 }
 
 export async function fetchActions() {
-	const compendium = game.packs.get('aetherball');
+	const compendium = game.packs.get('aetherball.aetherball');
 	const actions = await compendium.getDocuments();
 	return actions;
 }
