@@ -1,0 +1,721 @@
+{
+  "package": "world.aetherball",
+  "metadata": {
+    "name": "aetherball",
+    "label": "Aetherball",
+    "path": "worlds/wyrdhaven-academy/packs/aetherball",
+    "type": "Item",
+    "system": "pf2e",
+    "ownership": {
+      "PLAYER": "OBSERVER",
+      "ASSISTANT": "OWNER"
+    },
+    "flags": {},
+    "packageType": "world",
+    "packageName": "wyrdhaven-academy",
+    "id": "world.aetherball"
+  },
+  "type": "Item",
+  "items": [
+    {
+      "folder": null,
+      "name": "Aetherball: Hinder",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><strong>Area </strong>@Template[type:emanation|distance:15]</p><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-4683bdf6-7fff-df32-25ad-dc7eadeb15f3\">Make the terrain around you difficult until the beginning of your next round.</strong></span></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 2
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_1_Hinder.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "0Dffrik9LMObI7gH"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Grab",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><strong>Effect</strong> @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier}</p><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-fcd912d5-7fff-be72-a4e1-36100b47f180\">Grab an unattended aetherball in your space.</strong></span></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 1
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_8_Grab.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "2vyQ5Gzmd2o03q0Y"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Concentrating",
+      "type": "effect",
+      "effects": [],
+      "system": {
+        "description": {
+          "gm": "",
+          "value": "<p>You are concentrating on an Aetherball effect. It lasts until the beginning of your next turn and is disrupted if you fall @UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone}.</p>"
+        },
+        "rules": [],
+        "slug": null,
+        "_migration": {
+          "version": 0.935,
+          "lastMigration": null
+        },
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "level": {
+          "value": 1
+        },
+        "duration": {
+          "value": 1,
+          "unit": "rounds",
+          "expiry": "turn-start",
+          "sustained": false
+        },
+        "start": {
+          "value": 0,
+          "initiative": null
+        },
+        "tokenIcon": {
+          "show": true
+        },
+        "badge": null,
+        "context": null,
+        "unidentified": false
+      },
+      "img": "../../assets/aetherball_10_Concentrating.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "6NqooLWyAKlNi5lz"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Intercept",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p>Whenever the ball enters or passes an occupied space unattended, the occupying player can roll @Check[type:reflex|dc:15|showDC:all] to try and intercept it.</p><p>If the ball became unattended due to an ally's @UUID[Item.T8388DMrptIxfOHf]{Aetherball: Throw} and that ally is in an adjacent space, this counts as a pass and you automatically succeed.</p><hr /><p><strong>Success</strong> You are now the @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier}</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "reaction"
+        },
+        "actions": {
+          "value": null
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_7_Intercept.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "Fth27LD2eN1Vy6TL"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Carrier",
+      "type": "effect",
+      "effects": [],
+      "system": {
+        "description": {
+          "gm": "",
+          "value": "<p>You're carrying the ball!</p>"
+        },
+        "rules": [],
+        "slug": null,
+        "_migration": {
+          "version": 0.935,
+          "lastMigration": null
+        },
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "level": {
+          "value": 1
+        },
+        "duration": {
+          "value": -1,
+          "unit": "unlimited",
+          "expiry": null,
+          "sustained": false
+        },
+        "start": {
+          "value": 0,
+          "initiative": null
+        },
+        "tokenIcon": {
+          "show": true
+        },
+        "badge": null,
+        "context": null,
+        "unidentified": false
+      },
+      "img": "../../assets/aetherball_3_Carrier.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "KN4JSl526lTtD9GG"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Yank",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p>Yank the ball out of a player's hands, attempt a @Check[spell|against:reflex] attack against the target's Reflex DC.</p><p><span style=\"font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif\">This action uses and counts toward your multiple attack penalty.</span></p><hr /><p><strong>Critical Success </strong><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">You pull the ball one space in your direction.</strong></span></p><p><strong>Success</strong> <span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">As critical success, but the ball falls in a random adjacent space.</strong></span></p><p><strong>Failure</strong> No effect.</p><p><strong>Critical Failure</strong> No effect.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 1
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_11_Yank.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "KpUJvcwxbTAxuylE"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Blast",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><strong>Range</strong> 30 feet</p><hr /><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-8f07e4dc-7fff-8870-8815-0824940aca77\">Magically try to bring a player down, attempt a </strong></span>@Check[spell|against:reflex] attack <span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-8f07e4dc-7fff-8870-8815-0824940aca77\">against an opponent.</strong></span></p><p><span style=\"font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif\">This action uses and counts toward your multiple attack penalty.</span></p><hr /><p><strong>Critical Success </strong><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-8f07e4dc-7fff-8870-8815-0824940aca77\">The player falls </strong></span>@UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone} and is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}</p><p><strong>Success</strong> <span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">As critical success, but the target is not stunned.</strong></span></p><p><strong>Failure</strong> No effect.</p><p><strong>Critical Failure</strong> No effect.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 2
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_13_Blast.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "NUYcs9S9KlifJcUM"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Throw",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-365531c3-7fff-a2fc-7ac5-cb9bcb9e9e1a\">Throw the ball to any target tile at a distance lesser or equal to the result of an @Check[athletics] check, with a minimum of 5ft.</strong></span></p><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-365531c3-7fff-a2fc-7ac5-cb9bcb9e9e1a\">You can opt to do so under the effects of @UUID[Compendium.pf2e.feats-srd.Item.W6Gl9ePmItfDHji0]{Assurance (Athletics)}, even if you do not have that feat.</strong></span></p><p>If you throw to an ally in an adjacent space, this counts as a pass and they automatically succeed their @UUID[Item.Fth27LD2eN1Vy6TL]{Aetherball: Intercept} attempt.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 1
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_4_Throw.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "T8388DMrptIxfOHf"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Steal",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-76eab878-7fff-4749-9347-dcb3de5beec0\">Steal the ball from an adjacent @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier}. Roll @Check[thievery|against:reflex] against the target's Reflex DC.</strong></span></p><p><span style=\"font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif\">This action uses and counts toward your multiple attack penalty.</span></p><hr /><p><strong>Critical Success</strong> You are now the @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier} and you can @UUID[Compendium.pf2e.actionspf2e.Item.UHpkTuCtyaPqiCAB]{Step}.</p><p><strong>Success</strong> As critical success, but you cannot @UUID[Compendium.pf2e.actionspf2e.Item.UHpkTuCtyaPqiCAB]{Step}.</p><p><strong>Failure</strong> No effect.</p><p><strong>Critical Failure</strong> You fall @UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone}.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 1
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_6_Steal.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "VnfuehqQBqKQ6oTw"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Shield",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Arial,sans-serif\"><strong>Range</strong><strong style=\"font-weight:normal\" id=\"docs-internal-guid-d90de15d-7fff-5d44-d5f5-2b6f5ddaf579\"> 30-foot</strong></span></p><p><strong>Effect</strong> @UUID[Item.6NqooLWyAKlNi5lz]{Aetherball: Concentrating}</p><hr /><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-d90de15d-7fff-5d44-d5f5-2b6f5ddaf579\">Magically protect the ball, another player, or both if they're the @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier}, increasing the DC of actions against them by [[@self.level]] until the beginning of your next round or until you fall @UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone}.</strong></span></p><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-d90de15d-7fff-5d44-d5f5-2b6f5ddaf579\">One can only receive protection from one source, subsequent shields replace the current one and the original caster automatically stops </strong></span>@UUID[Item.6NqooLWyAKlNi5lz]{Aetherball: Concentrating}.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 2
+        },
+        "category": "defensive",
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_0_Shield.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "ZzXhbEBuyjLQlETn"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Prone",
+      "type": "effect",
+      "effects": [],
+      "system": {
+        "description": {
+          "gm": "",
+          "value": "<p>You fall @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60] suffering all effects as well as :</p><ul><li><p>You lose @UUID[Item.KN4JSl526lTtD9GG]{Aetherball: Carrier}, the ball drops in a random adjacent space.</p></li><li><p>You lose @UUID[Item.6NqooLWyAKlNi5lz]{Aetherball: Concentrating}, any effect is disrupted.</p></li></ul>"
+        },
+        "rules": [],
+        "slug": null,
+        "_migration": {
+          "version": 0.935,
+          "lastMigration": null
+        },
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "level": {
+          "value": 1
+        },
+        "duration": {
+          "value": -1,
+          "unit": "unlimited",
+          "expiry": null,
+          "sustained": false
+        },
+        "start": {
+          "value": 0,
+          "initiative": null
+        },
+        "tokenIcon": {
+          "show": true
+        },
+        "badge": null,
+        "context": null,
+        "unidentified": false
+      },
+      "img": "../../assets/aetherball_9_Prone.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "fL72ujhOBgIvOgA5"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Tackle",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">@UUID[Compendium.pf2e.actionspf2e.Item.Bcxarzksqt9ezrs6]{Stride} into an occupied space. Attempt an Unarmed @UUID[Compendium.pf2e.actionspf2e.Item.VjxZFuUXrCU94MWR] against the occupying player.</strong></span></p><p><span style=\"font-family:'Century Gothic', CenturyGothic, AppleGothic, sans-serif\">This action uses and counts toward your multiple attack penalty.</span></p><hr /><p><strong>Critical Success </strong><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">You move into the space and the occupying player is pushed 10ft away from you and falls prone.</strong></span></p><p><strong>Success</strong> <span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-2db0095c-7fff-9f16-854e-7c5fbeac5af1\">As critical success, but the target is only pushed 5ft.</strong></span></p><p><strong>Failure</strong> No effect.</p><p><strong>Critical Failure</strong> You fall @UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone}.</p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 2
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_5_Tackle.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "gxj5QmoxAZPVXq74"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Force Wall",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><span style=\"font-family:Arial,sans-serif\"><strong>Area</strong><strong style=\"font-weight:normal\" id=\"docs-internal-guid-b3d66ede-7fff-58ca-2b6d-a994561111ff\"> </strong></span><span style=\"font-family:ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace\">@Template[type:line|distance:30]</span></p><p><strong>Effect</strong> @UUID[Item.6NqooLWyAKlNi5lz]{Aetherball: Concentrating}</p><hr /><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-b3d66ede-7fff-58ca-2b6d-a994561111ff\">Create a wall of magical force that blocks the ball from passing when unattended (throws and pushes). Players can still walk and carry the ball through. Last until the beginning of your next turn or until you fall @UUID[Item.fL72ujhOBgIvOgA5]{Aetherball: Prone}.</strong></span></p><p></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 3
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_2_Force%20Wall.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "iaZpk2vI9lavMiiw"
+    },
+    {
+      "folder": null,
+      "name": "Aetherball: Push",
+      "type": "action",
+      "effects": [],
+      "system": {
+        "_migration": {
+          "version": 0.935,
+          "previous": null
+        },
+        "description": {
+          "value": "<p><strong>Range</strong> 30-foot</p><hr /><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-c8c5eb34-7fff-3ec6-8f0b-1776f9ffdd8f\">Roll Magic </strong></span>(@Check[nature], @Check[arcana], @Check[occultism], @Check[religion])<span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-c8c5eb34-7fff-3ec6-8f0b-1776f9ffdd8f\"> to push the ball. It must be unattended or held by you.</strong></span></p><hr /><p><span style=\"font-family:Arial,sans-serif\"><strong>Success</strong><strong style=\"font-weight:normal\" id=\"docs-internal-guid-c8c5eb34-7fff-3ec6-8f0b-1776f9ffdd8f\"> The ball is pushed in a straight line in the direction of your choosing with a distance equal to your result.</strong></span></p>",
+          "gm": ""
+        },
+        "publication": {
+          "title": "",
+          "authors": "",
+          "license": "OGL",
+          "remaster": false
+        },
+        "rules": [],
+        "slug": null,
+        "traits": {
+          "otherTags": [],
+          "value": []
+        },
+        "actionType": {
+          "value": "action"
+        },
+        "actions": {
+          "value": 1
+        },
+        "category": null,
+        "deathNote": false
+      },
+      "img": "../../assets/aetherball_12_Push.jpg",
+      "flags": {},
+      "_stats": {
+        "coreVersion": "12.331",
+        "systemId": "pf2e",
+        "systemVersion": "6.8.1",
+        "createdTime": 1735505400048,
+        "modifiedTime": 1735505400048,
+        "lastModifiedBy": "X3P2JTdTjkuxhmkc"
+      },
+      "_id": "zQsw8Ls0jMMPtsFB"
+    }
+  ],
+  "source": {
+    "world": "wyrdhaven-academy",
+    "system": "pf2e",
+    "version": {
+      "core": "12.331",
+      "system": "6.8.1"
+    }
+  },
+  "folders": []
+}

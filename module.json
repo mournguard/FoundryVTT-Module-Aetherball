@@ -1,6 +1,6 @@
 {
-  "id": "module",
-  "title": "New Module",
+  "id": "aetherball",
+  "title": "Aetherball",
   "description": "",
   "version": "#{VERSION}#",
   "library": "false",
@@ -13,8 +13,11 @@
   "authors": [
     {
       "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "url": "https://github.com/League-of-Foundry-Developers"
+    },
+    {
+      "name": "Mournguard",
+      "url": "https://github.com/mournguard/"
     }
   ],
   "relationships": {
@@ -30,6 +33,14 @@
   "styles": [
     "styles/module.css"
   ],
+  "packs": [{
+    "name": "aetherball",
+    "label": "Aetherball",
+    "path": "packs/aetherball",
+    "type": "Item",
+    "banner": "../../assets/banner.webp",
+    "system": "pf2e"
+  }],
   "languages": [
     {
       "lang": "en",
