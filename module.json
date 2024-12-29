@@ -33,14 +33,7 @@
   "styles": [
     "styles/module.css"
   ],
-  "packs": [{
-    "name": "aetherball",
-    "label": "Aetherball",
-    "path": "packs/aetherball",
-    "type": "Item",
-    "banner": "packs/aetherball/assets/banner.webp",
-    "system": "pf2e"
-  }],
+  "packs": [],
   "languages": [
     {
       "lang": "en",
