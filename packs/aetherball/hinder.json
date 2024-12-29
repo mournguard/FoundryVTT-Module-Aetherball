@@ -1,0 +1,38 @@
+{
+    "folder": null,
+    "name": "Aetherball: Hinder",
+    "type": "action",
+    "effects": [],
+    "system": {
+      "_migration": {
+        "version": 0.935,
+        "previous": null
+      },
+      "description": {
+        "value": "<p><strong>Area </strong>@Template[type:emanation|distance:15]</p><p><span style=\"font-family:Arial,sans-serif\"><strong style=\"font-weight:normal\" id=\"docs-internal-guid-4683bdf6-7fff-df32-25ad-dc7eadeb15f3\">Make the terrain around you difficult until the beginning of your next round.</strong></span></p>",
+        "gm": ""
+      },
+      "publication": {
+        "title": "",
+        "authors": "",
+        "license": "OGL",
+        "remaster": false
+      },
+      "rules": [],
+      "slug": null,
+      "traits": {
+        "otherTags": [],
+        "value": []
+      },
+      "actionType": {
+        "value": "action"
+      },
+      "actions": {
+        "value": 2
+      },
+      "category": null,
+      "deathNote": false
+    },
+    "img": "modules/aetherball/assets/aetherball_1_Hinder.jpg",
+    "_id": "0Dffrik9LMObI7gH"
+  }
