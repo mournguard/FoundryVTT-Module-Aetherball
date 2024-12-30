@@ -22,13 +22,14 @@ const TILE_MAP = {
 }
 
 class Aetherball {
+	actions_pack = "aetherball.aetherball"
     popout
 	current_tile = ACTIVE_TILE.Grass
-	scene_name = "Scene"
+	scene_name = "Aetherball Field"
 	position = {
 		width: "auto"
 	}
-	grid_start = {x: 10, y: 1}
+	grid_start = {x: 4, y: 2}
 	grid_size = {x: 41, y: 17}
 	grid_pattern = [[ACTIVE_TILE.Dirt,ACTIVE_TILE.Grass],[ACTIVE_TILE.Grass,ACTIVE_TILE.Stone]]
 
@@ -38,14 +39,14 @@ class Aetherball {
 }
 
 function validateTokenTile(t) {
-	if(!t || !t.inCombat || !t.scene.name == CONFIG.AETHERBALL.scene_name) return ACTIVE_TILE.Invalid
+	if(!t || !t.inCombat || t.scene.name != CONFIG.AETHERBALL.scene_name) return ACTIVE_TILE.Invalid
 	let tile_position = {
 		"x": (t.document._source.x - t.scene.dimensions.sceneRect.x) / t.scene.dimensions.distancePixels / t.scene.dimensions.distance,
 		"y": (t.document._source.y - t.scene.dimensions.sceneRect.y) / t.scene.dimensions.distancePixels / t.scene.dimensions.distance,
 	}
 	if(
-		CONFIG.AETHERBALL.grid_start.x < tile_position.x < CONFIG.AETHERBALL.grid_start.x + CONFIG.AETHERBALL.grid_size.x &&
-		CONFIG.AETHERBALL.grid_start.y < tile_position.y < CONFIG.AETHERBALL.grid_start.y + CONFIG.AETHERBALL.grid_size.y
+		CONFIG.AETHERBALL.grid_start.x <= tile_position.x && tile_position.x < CONFIG.AETHERBALL.grid_start.x + CONFIG.AETHERBALL.grid_size.x &&
+		CONFIG.AETHERBALL.grid_start.y <= tile_position.y && tile_position.y < CONFIG.AETHERBALL.grid_start.y + CONFIG.AETHERBALL.grid_size.y
 	) {
 		const patternWidth = CONFIG.AETHERBALL.grid_pattern[0].length;
 		const patternHeight = CONFIG.AETHERBALL.grid_pattern.length;
@@ -53,6 +54,7 @@ function validateTokenTile(t) {
 		const mappedY = Math.abs(tile_position.y - CONFIG.AETHERBALL.grid_start.y) % patternHeight;
 		return CONFIG.AETHERBALL.grid_pattern[mappedY][mappedX];
 	}
+	return ACTIVE_TILE.Invalid
 }
 
 const { ApplicationV2: ApplicationV2$1, HandlebarsApplicationMixin: HandlebarsApplicationMixin$1 } = foundry.applications.api;
@@ -91,32 +93,55 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 			return
 		}
 		
+		const original_position = this.element ? this.position.left + this.element.getBoundingClientRect().width/2 : null
 		CONFIG.AETHERBALL.popout.current_tile = validateTokenTile(canvas.tokens.controlled[0])
 		if(CONFIG.AETHERBALL.popout.current_tile != ACTIVE_TILE.Invalid) await this.render(true);
 		else await this.close({ animate: false })
+		if (original_position) {
+			this.position.left = original_position - this.element.getBoundingClientRect().width/2
+			this.setPosition(this.position)
+		}
+	}
+
+	_onFirstRender(context, options) {
+		super._onFirstRender(context, options);
+		const position = game.settings.get("aetherball", "popoutPosition");
+		const left = position.left ?? ui.nav?.element[0].getBoundingClientRect().left;
+		const top = position.top ?? ui.controls?.element[0].getBoundingClientRect().top;
+		options.position = {...options.position, left, top};
 	}
 
 	_onRender(context, options) {
 		super._onRender(context, options);
 		this.position.width = "auto";
-		this.position.top = canvas.screenDimensions[1] - 250
-		//this.element.style.width = "auto";
-		console.log(this.position)
 		for (const button of this.element.querySelectorAll(".aetherball-popout button")) {
+			const selectedToken = canvas.tokens.controlled[0];
+
 			button.addEventListener("click", async (e) => {
-				const selectedToken = canvas.tokens.controlled[0];
+				const action = await fetchAction(e.currentTarget.dataset.action)
+
 				if (!selectedToken || canvas.tokens.controlled.length > 1) {
 					ui.notifications.warn("Please select only one token first.");
 					return;
 				}
-				const action = await fetchAction(e.currentTarget.dataset.action);
 				
 				if(action.type == "effect") {
 					let item = selectedToken.actor.items.find(i => i.name === action.name);
 					if (item) {
 						await selectedToken.actor.deleteEmbeddedDocuments('Item', [item.id]);
+						button.style.filter = "grayscale(1)"
+						if(action.name == "Aetherball: Prone") {
+							const prone_item = selectedToken.actor.items.find(i => i.name === "Prone");
+							if(prone_item) await selectedToken.actor.deleteEmbeddedDocuments('Item', [prone_item.id]);
+						}
 					} else {
 						item = await selectedToken.actor.createEmbeddedDocuments('Item', [action.toObject()]);
+						await item[0].toMessage();
+						button.style.filter = ""
+						if(action.name == "Aetherball: Prone") {
+							const pf2e_prone = await fetchProne()
+							await selectedToken.actor.createEmbeddedDocuments('Item', [pf2e_prone.toObject()]);
+						}
 					}
 				} else {
 					let item = selectedToken.actor.items.find(i => i.name === action.name);
@@ -128,11 +153,17 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 					await selectedToken.actor.deleteEmbeddedDocuments('Item', [item.id]);
 				}
 			})
+
+			fetchAction(button.dataset.action).then((action) => {
+				if(selectedToken && action.type == "effect") {
+					button.style.filter = selectedToken.actor.items.find(i => i.name === action.name) ? "" : "grayscale(1)"
+				}
+			});
 		}
 	}
 
 	async _prepareContext(_options) {
-		const actions = await fetchAllActions();
+		const actions = await fetchAetherballActions();
 		
 		let display = []
 
@@ -167,16 +198,21 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 	}
 }
 
-async function fetchAllActions() {
-	const compendium = game.packs.get('aetherball.aetherball');
+async function fetchAetherballActions() {
+	const compendium = game.packs.get(CONFIG.AETHERBALL.actions_pack);
 	const actions = await compendium.getDocuments();
 	return actions;
 }
 
 async function fetchAction(itemId) {
-	const compendium = game.packs.get('aetherball.aetherball');
+	const compendium = game.packs.get(CONFIG.AETHERBALL.actions_pack);
 	const item = await compendium.getDocument(itemId);
 	return item;
+}
+
+async function fetchProne() {
+	const compendium = game.packs.get("pf2e.conditionitems");
+	return await compendium.getDocument(compendium.index.find((e) => e.name == "Prone")._id);
 }
 
 async function preloadTemplates() {

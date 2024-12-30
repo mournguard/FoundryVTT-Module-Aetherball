@@ -33,14 +33,24 @@
   "styles": [
     "styles/module.css"
   ],
-  "packs": [{
-    "name": "aetherball",
-    "label": "Aetherball",
-    "path": "packs/aetherball",
-    "type": "Item",
-    "banner": "modules/aetherball/assets/banner.webp",
-    "system": "pf2e"
-  }],
+  "packs": [
+    {
+      "name": "aetherball",
+      "label": "Aetherball",
+      "path": "packs/aetherball",
+      "type": "Item",
+      "banner": "modules/aetherball/assets/banner.webp",
+      "system": "pf2e"
+    },
+    {
+      "name": "aetherball-field",
+      "label": "Aetherball Field",
+      "path": "packs/aetherball-field",
+      "type": "Scene",
+      "banner": "modules/aetherball/assets/banner.webp",
+      "system": "pf2e"
+    }
+  ],
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",

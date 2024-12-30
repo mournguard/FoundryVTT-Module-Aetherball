@@ -1,0 +1,7 @@
+2024/12/30-04:45:50.888 55f0 Recovering log #4
+2024/12/30-04:45:50.891 55f0 Delete type=0 #4
+2024/12/30-04:45:50.891 55f0 Delete type=3 #2
+2024/12/30-04:54:38.668 4024 Level-0 table #9: started
+2024/12/30-04:54:38.676 4024 Level-0 table #9: 2320 bytes OK
+2024/12/30-04:54:38.676 4024 Delete type=0 #7
+2024/12/30-04:54:38.678 4024 Manual compaction at level-0 from '!scenes!myPZIa73ERkvpgH0' @ 72057594037927935 : 1 .. '!scenes.tokens.delta!myPZIa73ERkvpgH0.aM0p58TXM5FtUQBa.hxRdlU1HTJH0rUZc' @ 0 : 0; will stop at (end)
