@@ -1,0 +1,16 @@
+.aetherball-popout {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.aetherball-action {
+    width: 5rem;
+    text-align: center;
+    font-size: 12px;
+}
+
+.aetherball-action button {
+    height: 5rem;
+    padding: 0;
+    margin-top: 0.5rem;
+}

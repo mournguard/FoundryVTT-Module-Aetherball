@@ -2,8 +2,31 @@
 
 const { ApplicationV2: ApplicationV2$1, HandlebarsApplicationMixin: HandlebarsApplicationMixin$1 } = foundry.applications.api;
 
+const ACTIVE_TILE = {Grass: 0, Dirt: 1, Stone: 2}
+
+const TILE_MAP = {
+	[ACTIVE_TILE.Grass]: [
+		"Aetherball: Steal",
+		"Aetherball: Throw",
+		"Aetherball: Grab",
+		"Aetherball: Tackle",
+		"Aetherball: Intercept",
+	],
+	[ACTIVE_TILE.Dirt]: [
+		"Aetherball: Blast",
+		"Aetherball: Push",
+		"Aetherball: Yank",
+	],
+	[ACTIVE_TILE.Stone]: [
+		"Aetherball: Force Wall",
+		"Aetherball: Hinder",
+		"Aetherball: Shield",
+	],
+}
+
 class Aetherball {
     popout
+	state = ACTIVE_TILE.Grass
 
 	get settings() {
 		return {};
@@ -14,9 +37,6 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 	static DEFAULT_OPTIONS = {
 		id: "aetherball-popout",
 		tag: "aside",
-		position: {
-			width: ui?.sidebar?.options.width ?? 300
-		},
 		window: {
 			title: "Aetherball",
 			minimizable: true
@@ -40,18 +60,64 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		if ( !options.closeKey ) return super.close(options);
 		return this;
 	}
-    
-	_onFirstRender(context, options) {
-		super._onFirstRender(context, options);
-		const position = game.settings.get("aetherball", "popoutPosition");
-		const left = position.left ?? ui.nav?.element[0].getBoundingClientRect().left;
-		const top = position.top ?? ui.controls?.element[0].getBoundingClientRect().top;
-		options.position = {...options.position, left, top};
+
+	_onRender(context, options) {
+		super._onRender(context, options);
+		for (const button of this.element.querySelectorAll(".aetherball-popout button")) {
+			button.addEventListener("click", async (e) => {
+				const selectedToken = canvas.tokens.controlled[0];
+				if (!selectedToken) {
+					ui.notifications.warn("Please select a token first.");
+					return;
+				}
+				const action = await fetchAction(e.currentTarget.dataset.action);
+				
+				if(action.type == "effect") {
+					let item = selectedToken.actor.items.find(i => i.name === action.name);
+					if (item) {
+						await selectedToken.actor.deleteEmbeddedDocuments('Item', [item.id]);
+					} else {
+						item = await selectedToken.actor.createEmbeddedDocuments('Item', [action.toObject()]);
+					}
+				} else {
+					let item = selectedToken.actor.items.find(i => i.name === action.name);
+					if (!item) {
+						item = await selectedToken.actor.createEmbeddedDocuments('Item', [action.toObject()]);
+						item = item[0]
+					}
+					await item.toMessage();
+					await selectedToken.actor.deleteEmbeddedDocuments('Item', [item.id]);
+				}
+			})
+		}
 	}
 
 	async _prepareContext(_options) {
+		const actions = await fetchActions();
+		
+		let display = []
+
+		for(let action in actions) {
+			//if(!TILE_MAP[CONFIG.AETHERBALL.state].includes(actions[action].name)) continue
+			if(actions[action].type == "effect") continue
+			display.push({
+				"id": actions[action].id,
+				"img": actions[action].img,
+				"name": actions[action].name.split("Aetherball: ")[1],
+			})
+		}
+
+		for(let action in actions) {
+			if(actions[action].type != "effect") continue
+			display.push({
+				"id": actions[action].id,
+				"img": actions[action].img,
+				"name": actions[action].name.split("Aetherball: ")[1],
+			})
+		}
+
 		return {
-			actions: fetchActions(),
+			actions: display,
 		};
 	}
 
@@ -63,15 +129,21 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 	}
 }
 
-export async function fetchActions() {
+async function fetchActions() {
 	const compendium = game.packs.get('aetherball.aetherball');
 	const actions = await compendium.getDocuments();
 	return actions;
 }
 
+async function fetchAction(itemId) {
+	const compendium = game.packs.get('aetherball.aetherball');
+	const item = await compendium.getDocument(itemId);
+	return item;
+}
+
 async function preloadTemplates() {
 	const templatePaths = [
-		"modules/aeterball/templates/popout.html",
+		"modules/aetherball/templates/popout.html",
 	];
 
 	return loadTemplates(templatePaths);
@@ -96,7 +168,7 @@ async function togglePopout() {
 }
 
 function registerSettings() {
-	game.settings.register("dice-calculator", "popoutPosition", {
+	game.settings.register("aetherball", "popoutPosition", {
 		scope: "client",
 		config: false,
 		default: {},

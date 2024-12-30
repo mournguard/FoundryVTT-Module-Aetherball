@@ -1,3 +1,8 @@
 <section class="aetherball-popout">
-	{{#each actions}}<button class="action-button" data-action="{{this.id}}">{{this.name}}</button>
+	{{#each actions as |action|}}
+		<div class="aetherball-action">
+			<span>{{action.name}}</span>
+			<button data-action="{{action.id}}"><img src="{{action.img}}" title="{{action.name}}"/></button>
+		</div>
+	{{/each}}
 </section>
