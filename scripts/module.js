@@ -36,11 +36,6 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		return frame;
 	}
 
-	async render() {
-		const actions = fetchActions();
-		this.renderTemplate('actions', { actions: actions });
-	}
-
     async close(options={}) {
 		if ( !options.closeKey ) return super.close(options);
 		return this;
@@ -52,6 +47,12 @@ class AetherballPopout extends HandlebarsApplicationMixin$1(ApplicationV2$1) {
 		const left = position.left ?? ui.nav?.element[0].getBoundingClientRect().left;
 		const top = position.top ?? ui.controls?.element[0].getBoundingClientRect().top;
 		options.position = {...options.position, left, top};
+	}
+
+	async _prepareContext(_options) {
+		return {
+			actions: fetchActions(),
+		};
 	}
 
     setPosition(position) {
